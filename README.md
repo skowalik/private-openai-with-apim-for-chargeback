@@ -187,7 +187,7 @@ customEvents
     CompletionTokens = tokenData.CompletionTokens,
     TotalTokens = tokenData.TotalTokens
 | summarize PromptTokens = sum(toint(PromptTokens)) , CompletionTokens = sum(toint(CompletionTokens)), TotalTokens = sum(toint(TotalTokens)) by tostring(AppKey)
-| project strcat(substring(tostring(AppKey),0,8), "XXXX"), PromptTokens, CompletionTokens, TotalTokens
+| project SubscriptionKey = strcat(substring(tostring(AppKey),0,8), "XXXX"), PromptTokens, CompletionTokens, TotalTokens
 ```
 
 The queries can be visualised using Azure Dashboards
